@@ -1,0 +1,28 @@
+{
+  "name": "userlist",
+  "version": "1.0.0",
+  "description": "User info manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ss",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consolidate": "*",
+    "cors": "^2.8.5",
+    "dust": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "pg": "^8.4.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5",
+    "sqlite": "^4.0.15"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
