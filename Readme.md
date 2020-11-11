@@ -9,4 +9,4 @@ get /show - shows all users
 get /user/:id - shows the user by ID
 put /update/:id/:name - edits a user by id
 post /create/:name - creates a user 
-delete /:id - deletes user by ID
+delete /delete/:id - deletes user by ID
