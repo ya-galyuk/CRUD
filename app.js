@@ -1,14 +1,18 @@
 const {User} = require('./Model');
+var bodyParser = require('body-parser');
 var express = require('express'),
     app = express();
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded());
+
 global.app = app;
 require("./Connect");
 require('./Routes')
 sequelize.sync().then(() => {
     app.listen(3131, function () {
-        console.log("Сервер ожидает подключения...");
+        console.log("Server start on localhost:3131");
     });
-
 //func to check connection
     async function check() {
         try {
@@ -20,8 +24,7 @@ sequelize.sync().then(() => {
     }
     check();
 }).catch(err => console.log(err));
-
-
+global.app = app;
 
 
 

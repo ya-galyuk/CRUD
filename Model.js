@@ -12,7 +12,6 @@ const User = sequelize.define('users', {
         type: DataTypes.TEXT,
         allowNull: false
     }
-
 }, {
     timestamps: false
 });
