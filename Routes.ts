@@ -2,44 +2,25 @@ import app = require("./app");
 import {User} from "./Model";
 import express from "express";
 import sequelize from "./Connect";
-/*app.get("/show", (req : express.Request,res : express.Response)=> {
-    User
-        .findAll({raw: true})
-        .then(users   => {
-        res.send(users);
-    }).catch();
-});*/
+
 app.get("/show", async (req : express.Request,res : express.Response)=> {
     try {
-
         res.json( await User.scope()
             .findAll());
-
      }
     catch(e){
         console.log(e)
     }
 });
-/*app.get('/user/:id', (req : express.Request,res : express.Response) => {
 
-    User
-        .findByPk(req.params.id)
-        .then((user) => {
-            if (!req.params.id) return; // если пользователь не найден
-            res.send(user);
-        }).catch();
-});*/
 app.get('/user/:id',async (req : express.Request,res : express.Response) => {
-
     try {
-
         const user = await User.scope()
             .findByPk(req.params['id']);
             res.json(user);
     } catch (e){
         console.log(e);
     }
-
 });
 app.put('/update', (req : express.Request,res : express.Response) => {
     User.update({name: req.body.name}, {
