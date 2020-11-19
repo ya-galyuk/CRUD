@@ -1,11 +1,120 @@
 {
   "defaultSeverity": "error",
   "extends": [
+    "tslint:latest",
     "tslint:recommended"
   ],
   "jsRules": {},
   "rules": {
-    "trailing-comma": [ false ]
+    "prettier": true,
+    "jsx-no-lambda": true,
+    "ordered-imports": false,
+    "no-any": true,
+    "arrow-return-shorthand": true,
+    "callable-types": true,
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": true,
+    "forin": true,
+    "interface-name": false,
+    "interface-over-type-literal": true,
+    "label-position": true,
+    "member-access": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
+      }
+    ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [
+      false,
+      "log",
+      "error"
+    ],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-super": true,
+    "no-empty": false,
+    "no-empty-interface": true,
+    "no-eval": true,
+    "no-inferred-empty-object-type": true,
+    "no-object-literal-type-assertion": [
+      true
+    ],
+    "no-inferrable-types": [
+      false
+    ],
+    "no-misused-new": true,
+    "no-non-null-assertion": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-unnecessary-initializer": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "prefer-const": true,
+    "radix": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "unified-signatures": true,
+    "variable-name": false,
+    "trailing-comma": [
+      false,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "linebreak-style": [
+      false,
+      "LF"
+    ],
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": [
+      false,
+      "dev",
+      [
+        "src",
+        "common",
+        "routes",
+        "store",
+        "components",
+        "pages",
+        "rc-field-form"
+      ]
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ]
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  }
 }

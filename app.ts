@@ -18,7 +18,7 @@ app = app2;
          console.log("server started on localhost:3131")
      })
 
-app.get("/",(req,res) =>{
+app.get("/",(req : express.Request,res : express.Response) =>{
     res.send("hello" )
 })
 export = app;

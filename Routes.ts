@@ -1,45 +1,72 @@
 import app = require("./app");
 import {User} from "./Model";
-app.get("/show", (req, res)=> {
-    User.findAll({raw: true}).then(users => {
+import express from "express";
+import sequelize from "./Connect";
+/*app.get("/show", (req : express.Request,res : express.Response)=> {
+    User
+        .findAll({raw: true})
+        .then(users   => {
         res.send(users);
-    }).catch(err => console.log(err));
+    }).catch();
+});*/
+app.get("/show", async (req : express.Request,res : express.Response)=> {
+    try {
+
+        res.json( await User.scope()
+            .findAll());
+
+     }
+    catch(e){
+        console.log(e)
+    }
 });
-app.get('/user/:id', (req, res) => {
-    console.log(req.params);
-    console.log(req.params.id)
-    User.findByPk(req.params.id)
-        .then(user => {
-            if (!user) return; // если пользователь не найден
+/*app.get('/user/:id', (req : express.Request,res : express.Response) => {
+
+    User
+        .findByPk(req.params.id)
+        .then((user) => {
+            if (!req.params.id) return; // если пользователь не найден
             res.send(user);
-        }).catch(err => console.log(err));
+        }).catch();
+});*/
+app.get('/user/:id',async (req : express.Request,res : express.Response) => {
+
+    try {
+
+        const user = await User.scope()
+            .findByPk(req.params['id']);
+            res.json(user);
+    } catch (e){
+        console.log(e);
+    }
+
 });
-app.put('/update', (req, res) => {
+app.put('/update', (req : express.Request,res : express.Response) => {
     User.update({name: req.body.name}, {
         where: {
             id: req.body.id
         }
-    }).then((res) => {
+    }).then(() => {
     });
     res.redirect("/show");
 });
-app.post('/create', (req, res)=> {
+app.post('/create', (req : express.Request,res : express.Response)=> {
     User.create({
         name: req.body.name,
-    }).then(res => {
-    }).catch(err => console.log(err));
+    }).then(() => {
+    }).catch();
     res.redirect("/show");
 });
-app.delete('/delete/:id',  (req, res)=> {
+app.delete('/delete/:id',  (req : express.Request,res : express.Response)=> {
     User.destroy({
         where: {
             id: req.params.id
         }
-    }).then((res) => {
+    }).then(() => {
     });
     res.redirect("/show");
 });
-app.get('/', (req, res) => {
+app.get('/', (req : express.Request,res : express.Response) => {
     console.log('conected');//получаем лог при попытке подключения
     res.send('userlist');
 });

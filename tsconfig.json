@@ -3,9 +3,10 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "sourceMap": true
   }
 
 }
