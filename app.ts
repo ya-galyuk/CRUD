@@ -7,7 +7,6 @@ import express from 'express';
    app.use(express.json());
    app.use(express.urlencoded());
 
-
 module.exports = app;
 import sequelize from "./Connect";
 
