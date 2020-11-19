@@ -22,6 +22,3 @@ app.get("/",(req : express.Request,res : express.Response) =>{
     res.send("hello" )
 })
 export = app;
-//import {app} from "./Routes";
-//var app3 = app;
-//export {app3};
