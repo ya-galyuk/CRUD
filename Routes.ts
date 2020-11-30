@@ -1,29 +1,36 @@
 import app = require("./app");
 import express from "express";
-import {getUsers,getUser,createUser,updateUser,deleteUser} from "./Model";
+import {User} from "./Model";
+import {IUser} from "./Model";
+import {Response} from "express";
 
-app.get("/show",async (req : express.Request,res : express.Response) =>{
-    try {res.send(await getUsers());}
+
+app.get("/show",async (req : express.Request,
+                       res : Response ):Promise<Response<IUser[]>> =>{
+    try {let Users = await User.findAll();
+        return res.json(Users)}
     catch (e){}
 });
 app.get("/user/:id",async(req : express.Request,
-                          res : express.Response) =>{
-    try {res.send(await getUser(req.params.id));}
+                          res : Response):Promise<Response<IUser[]>> =>{
+    try {let Users = await User.findByPk(req.params.id);
+        return res.send(Users);}
     catch (e){}
 });
 app.post("/create",async(req:express.Request,
                                 res:express.Response)=>{
-   try{ await createUser(req.body.name);}
+   try{await User.create({name: req.body.name});}
    catch (e){} res.redirect("/show");
 });
 app.put("/update", async(req:express.Request,
                                       res:express.Response) =>{
-    try{await updateUser(req.body.id,req.body.name)}
+    try{await User.update({name: req.body.name},{
+        where: {id:req.body.id}});}
     catch (e){}res.redirect("/show");
 });
-app.delete("/delete",async(req : express.Request,
+app.delete("/delete/:id",async(req : express.Request,
                                         res:express.Response)=>{
-    try{await deleteUser(req.body.id)}
+    try{await User.destroy({where:{id:req.params.id}});}
     catch (e){}res.redirect("/show");
 });
 

@@ -1,11 +1,13 @@
 {
   "defaultSeverity": "error",
+
   "extends": [
     "tslint:latest",
     "tslint:recommended"
   ],
   "jsRules": {},
   "rules": {
+    "whitespace": false,
     "prettier": true,
     "jsx-no-lambda": true,
     "ordered-imports": false,
