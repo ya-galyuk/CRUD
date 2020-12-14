@@ -1,8 +1,5 @@
-import {User, IUser} from "./Model";
 import express from 'express';
-import {rejects} from "assert";
 import bodyParser from "body-parser";
-
 let app = express();
     app.use(bodyParser.json());
     app.use(express.json());
@@ -17,3 +14,4 @@ app.listen(3131, () => {
 });
 
 export = app;
+
